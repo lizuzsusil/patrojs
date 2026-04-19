@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@patrojs/core": ["packages/core/src/index.ts"],
+      "@patrojs/core/*": ["packages/core/src/*"]
+    }
+  }
+}
