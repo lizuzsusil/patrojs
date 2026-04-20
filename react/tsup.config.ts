@@ -7,4 +7,8 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ["react", "react-dom"],
+  noExternal: [/@patrojs\/core/],
+  loader: {
+    '.css': 'copy'
+  }
 });

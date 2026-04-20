@@ -1,5 +1,5 @@
 import type {CSSProperties} from 'react';
-import {type PatroJsPickerConfig, resolveConfig} from '@patrojs/core';
+import {type PatroJsPickerConfig, resolveConfig} from '../../core/src';
 import type {PatroJsPickerStyles, StyleResolver} from './types';
 
 // Returns a function that builds the style for each named slot,

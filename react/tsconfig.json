@@ -10,7 +10,7 @@
     "strict": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "baseUrl": ".",
+    "rootDir": "../"
   },
   "include": [
     "src"

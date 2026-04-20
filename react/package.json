@@ -1,6 +1,6 @@
 {
   "name": "@patrojs/react",
-  "version": "1.0.0-beta",
+  "version": "1.0.2-beta",
   "description": "Nepali (Bikram Sambat) datepicker component for React",
   "keywords": [
     "patro",
@@ -76,7 +76,6 @@
     "react-dom": "^18 || ^19"
   },
   "dependencies": {
-    "@patrojs/core": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

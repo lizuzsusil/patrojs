@@ -1,4 +1,12 @@
 import React, { CSSProperties } from 'react';
+// import {
+//   ColorConfig,
+//   PatroJsPickerConfig,
+//   GridStyle,
+//   NavIconConfig,
+//   RadiusConfig,
+//   PatroJsSizeTokens, PatroJsDateProps, PatroJsLanguage
+// } from '@patrojs/core';
 import {
   ColorConfig,
   PatroJsPickerConfig,
@@ -6,7 +14,7 @@ import {
   NavIconConfig,
   RadiusConfig,
   PatroJsSizeTokens, PatroJsDateProps, PatroJsLanguage
-} from '@patrojs/core';
+} from '../../core/src';
 
 // Per-slot style/class overrides — React specific
 export interface PatroJsPickerStyles {

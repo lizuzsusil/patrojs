@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
-import {bsToAd, DEFAULT_CONFIG, formatBsDate, getMonthData, todayBs, toNepaliDigits,} from '@patrojs/core';
+import {bsToAd, DEFAULT_CONFIG, formatBsDate, getMonthData, todayBs, toNepaliDigits,} from '../../core/src';
 
 import {useStyleResolver} from './useStyleResolver';
 import type {PatroJsProps} from './types';
