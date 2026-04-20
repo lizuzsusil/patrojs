@@ -1,6 +1,6 @@
 {
   "name": "@patrojs/react",
-  "version": "1.0.2-beta",
+  "version": "1.1.2-beta",
   "description": "Nepali (Bikram Sambat) datepicker component for React",
   "keywords": [
     "patro",
