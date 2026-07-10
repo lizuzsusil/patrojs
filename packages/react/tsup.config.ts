@@ -7,7 +7,7 @@ export default defineConfig({
     entry: ["src/index.tsx"],
     format: ["esm", "cjs"],
     dts: {
-        respectExternal: false,
+        resolve: [/@patrojs\/core/],
     },
     sourcemap: true,
     clean: true,
