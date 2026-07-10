@@ -1,4 +1,10 @@
-// ─── Size presets ────────────────────────────────────────────────────────────
+/**
+ * Size presets
+ *
+ * Defines the available size variants for the component.
+ * Each preset maps to a predefined set of dimensions, spacing,
+ * and typography values to ensure consistent sizing.
+ */
 export type PatroJsCalendarSize = 'sm' | 'md' | 'lg';
 
 export interface PatroJsSizeTokens {
@@ -41,9 +47,16 @@ export const SIZE_PRESETS: Record<PatroJsCalendarSize, PatroJsSizeTokens> = {
     },
 };
 
-// ─── Color config ────────────────────────────────────────────────────────────
-// User passes either a hex/rgb string OR a Tailwind class string per slot.
-// The resolver in react figures out which one it is.
+/**
+ * Color configuration
+ *
+ * Each color slot accepts either:
+ * - A CSS color value (e.g. "#3B82F6", "rgb(59, 130, 246)", "hsl(...)"), or
+ * - A Tailwind CSS utility class (e.g. "bg-blue-500", "text-red-600").
+ *
+ * The React color resolver automatically detects the input format
+ * and applies the appropriate handling.
+ */
 export interface ColorConfig {
     primary?: string;       // selected day bg, today border, footer btn bg
     primaryBg?: string;     // text on primary background (default: #fff)
@@ -54,6 +67,7 @@ export interface ColorConfig {
     text?: string;          // day text, select text
     muted?: string;         // weekday labels
     accent?: string;        // hover highlight
+    saturdayColor?: string; // text color for Saturday day cells and weekday label
 }
 
 export const DEFAULT_COLORS: Required<ColorConfig> = {
@@ -66,9 +80,16 @@ export const DEFAULT_COLORS: Required<ColorConfig> = {
     text: '#111827',
     muted: '#9ca3af',
     accent: '#f3f4f6',
+    saturdayColor: '#e30606',
 };
 
-// ─── Border radius config ────────────────────────────────────────────────────
+/**
+ * Border radius configuration
+ *
+ * Allows customization of the border radius for individual parts
+ * of the date picker. Each property accepts any valid CSS border-radius
+ * value (e.g. "8px", "0.5rem", "50%", "inherit").
+ */
 export interface RadiusConfig {
     calendar?: string;   // the dropdown panel
     input?: string;      // the trigger input
@@ -87,21 +108,43 @@ export const DEFAULT_RADIUS: Required<RadiusConfig> = {
     todayBtn: '8px',
 };
 
-// ─── Grid style ──────────────────────────────────────────────────────────────
+/**
+ * Calendar grid style
+ *
+ * Controls how the day grid is rendered.
+ * - "borderless": Displays day cells without borders.
+ * - "bordered": Displays borders between day cells.
+ */
 export type GridStyle = 'borderless' | 'bordered';
 
-// ─── Nav icon config ─────────────────────────────────────────────────────────
+/**
+ * Navigation icon configuration
+ *
+ * Allows customization of the previous and next navigation
+ * button icons. Each property accepts a string, such as a
+ * Unicode character, text, or icon glyph.
+ */
 export interface NavIconConfig {
     prev?: string;
     next?: string;
 }
 
+/**
+ * Default navigation icons used when no custom
+ * icons are provided.
+ */
 export const DEFAULT_NAV_ICONS: Required<NavIconConfig> = {
     prev: '‹',
     next: '›',
 };
 
-// ─── Master config ───────────────────────────────────────────────────────────
+/**
+ * Date picker configuration
+ *
+ * Provides a centralized configuration object for customizing
+ * the appearance and behavior of the date picker, including
+ * sizing, colors, border radius, grid style, and navigation icons.
+ */
 export interface PatroJsPickerConfig {
     size?: PatroJsCalendarSize;
     sizeTokens?: Partial<PatroJsSizeTokens>;
@@ -120,7 +163,22 @@ export const DEFAULT_CONFIG: Required<PatroJsPickerConfig> = {
     navIcons: DEFAULT_NAV_ICONS,
 };
 
-// ─── Resolver ────────────────────────────────────────────────────────────────
+/**
+ * Resolves the final date picker configuration by merging user-provided
+ * options with the default configuration.
+ *
+ * This function ensures that all configuration sections are fully populated,
+ * applying default values for any properties that are omitted. It also
+ * resolves the selected size preset and merges any custom size tokens.
+ *
+ * @param config - Partial date picker configuration.
+ * @returns The fully resolved configuration object containing:
+ * - `tokens`: Resolved size tokens.
+ * - `colors`: Complete color configuration.
+ * - `radius`: Complete border radius configuration.
+ * - `gridStyle`: Resolved calendar grid style.
+ * - `navIcons`: Complete navigation icon configuration.
+ */
 export function resolveConfig(config: PatroJsPickerConfig = {}): {
     tokens: PatroJsSizeTokens;
     colors: Required<ColorConfig>;

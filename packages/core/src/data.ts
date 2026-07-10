@@ -101,18 +101,28 @@ BIKRAM_SAMBAT[2097] = [2097, 31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30];
 BIKRAM_SAMBAT[2098] = [2098, 31, 31, 32, 31, 31, 31, 29, 30, 29, 30, 29, 31];
 BIKRAM_SAMBAT[2099] = [2099, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 31];
 
-// AD epoch: BS 2000/01/01 = AD 1943/04/14 (Wednesday)
+/**
+ * Calendar reference constants
+ *
+ * These constants define the supported Bikram Sambat (BS) calendar
+ * range and the Gregorian (AD) reference date used for BS ↔ AD
+ * date conversions.
+ *
+ * - `AD_EPOCH`: Gregorian equivalent of BS 2000/01/01.
+ * - `BS_START_YEAR`: First supported BS year.
+ * - `BS_END_YEAR`: Last supported BS year.
+ */
 export const AD_EPOCH = '1943-04-14';
 export const BS_START_YEAR = 2000;
 export const BS_END_YEAR = 2099;
 
 export const MONTHS_EN = [
-  'Baishakh', 'Jestha', 'Ashad', 'Shrawan', 'Bhadra', 'Ashwin',
-  'Kartik', 'Mangsir', 'Poush', 'Magh', 'Falgun', 'Chaitra',
+    'Baishakh', 'Jestha', 'Ashad', 'Shrawan', 'Bhadra', 'Ashwin',
+    'Kartik', 'Mangsir', 'Poush', 'Magh', 'Falgun', 'Chaitra',
 ];
 export const MONTHS_NE = [
-  'बैशाख', 'जेठ', 'असार', 'श्रावण', 'भदौ', 'असोज',
-  'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फाल्गुन', 'चैत्र',
+    'बैशाख', 'जेठ', 'असार', 'श्रावण', 'भदौ', 'असोज',
+    'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फाल्गुन', 'चैत्र',
 ];
 export const DAYS_SHORT_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export const DAYS_SHORT_NE = ['आइत', 'सोम', 'मंगल', 'बुध', 'बिहि', 'शुक्र', 'शनि'];

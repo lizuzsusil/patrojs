@@ -39,7 +39,7 @@ async function getDownloads() {
 }
 
 export const metadata: Metadata = {
-    title: 'PatroJS - Nepali (Bikram Sambat) Date Picker for Web frameworks',
+    title: 'PatroJS - Home',
     description:
         'A modern, accessible, and fully customizable Bikram Sambat date picker for Web frameworks. Built with TypeScript, supports Nepali locale, custom theming, and works with Next.js, Vue, and Angular.',
     openGraph: {
