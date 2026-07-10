@@ -1,0 +1,458 @@
+/* ─── Container ───────────────────────────────── */
+.pjs-container {
+  position: relative;
+  display: inline-block;
+  font-family: var(--pjs-font-family, ui-sans-serif, system-ui, sans-serif);
+}
+
+.pjs-container--inline {
+  display: block;
+}
+
+/* ─── Input ──────────────────────────────────── */
+.pjs-input-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pjs-input {
+  width: var(--pjs-input-width, 180px);
+  padding: var(--pjs-input-padding, 10px 12px);
+  border-radius: var(--pjs-radius-input, 10px);
+  border: 1px solid var(--pjs-border, #e5e7eb);
+  cursor: pointer;
+  background: var(--pjs-background, #ffffff);
+  font-size: var(--pjs-font-size, 14px);
+  box-sizing: border-box;
+  color: var(--pjs-text, #111827);
+}
+
+.pjs-input--has-icon-start {
+  padding-left: 34px;
+}
+
+.pjs-input--has-icon-end {
+  padding-right: 34px;
+}
+
+.pjs-input:focus {
+  outline: none;
+  border-color: var(--pjs-primary, #0d6efd);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.pjs-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--pjs-surface, #f9fafb);
+}
+
+.pjs-input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--pjs-muted, #9ca3af);
+}
+
+.pjs-input-icon--start {
+  left: 10px;
+}
+
+.pjs-input-icon--end {
+  right: 10px;
+}
+
+/* ─── Dropdown ───────────────────────────────── */
+.pjs-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: var(--pjs-calendar-width, 320px);
+  background: var(--pjs-background, #ffffff);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--pjs-border, #e5e7eb);
+  border-radius: var(--pjs-radius-calendar, 14px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  padding: var(--pjs-calendar-padding, 10px);
+  z-index: 100;
+  animation: pjs-pop 0.15s ease-out;
+}
+
+@keyframes pjs-pop {
+  from {
+    transform: translateY(-6px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ─── Header ─────────────────────────────────── */
+.pjs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pjs-select-group {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.pjs-select {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  border-radius: var(--pjs-radius-select, 8px);
+  border: 1px solid var(--pjs-border, #e5e7eb);
+  background: var(--pjs-background, #ffffff);
+  font-size: var(--pjs-header-font-size, 13px);
+  cursor: pointer;
+  color: var(--pjs-text, #111827);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pjs-nav-btn {
+  width: 25px;
+  height: 30px;
+  border-radius: var(--pjs-radius-nav, 10px);
+  border: 1px solid var(--pjs-border, #e5e7eb);
+  background: var(--pjs-background, #ffffff);
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--pjs-text, #111827);
+}
+
+.pjs-nav-btn:hover {
+  background: var(--pjs-primary, #f3f4f6);
+}
+
+/* ─── Weekdays ───────────────────────────────── */
+.pjs-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: var(--pjs-weekday-font-size, 11px);
+  color: var(--pjs-muted, #9ca3af);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.pjs-weekday {
+  padding: 4px 0;
+}
+
+/* ─── Grid ───────────────────────────────────── */
+.pjs-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.pjs-grid--bordered {
+  gap: 0;
+  border: 1px solid var(--pjs-border, #e5e7eb);
+  overflow: hidden;
+}
+
+.pjs-grid--bordered [role="gridcell"] {
+  border-right: 1px solid var(--pjs-border, #e5e7eb);
+  border-bottom: 1px solid var(--pjs-border, #e5e7eb);
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.pjs-grid--bordered [role="gridcell"]:nth-child(7n):not(:last-child) {
+  border-right: none;
+}
+
+.pjs-grid--bordered [role="gridcell"]:nth-last-child(-n+7) {
+  border-bottom: none;
+}
+
+.pjs-grid--bordered [role="gridcell"]:last-child {
+  border-right: none;
+}
+
+/* ─── Day Cell ───────────────────────────────── */
+.pjs-day {
+  aspect-ratio: 1;
+  min-height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: var(--pjs-radius-day, 8px);
+  cursor: pointer;
+  font-size: var(--pjs-font-size, 13px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pjs-text, #111827);
+  box-sizing: border-box;
+  transition: background 0.15s ease;
+}
+
+.pjs-day:hover:not(:disabled) {
+  background: var(--pjs-accent, #f3f4f6);
+}
+
+.pjs-day:focus-visible {
+  outline: 2px solid var(--pjs-primary, #0d6efd);
+  outline-offset: 2px;
+}
+
+/* ─── Day States ─────────────────────────────── */
+.pjs-day--today {
+  border: 1px solid var(--pjs-today-border, var(--pjs-primary, #0d6efd));
+  color: var(--pjs-today-border, var(--pjs-primary, #0d6efd));
+  font-weight: 600;
+}
+
+.pjs-grid--bordered .pjs-day--today {
+  border: 1px solid var(--pjs-today-border, var(--pjs-primary, #0d6efd));
+}
+
+.pjs-day--selected {
+  background: var(--pjs-primary, #0d6efd);
+  color: var(--pjs-primary-fg, #fff);
+  font-weight: 600;
+  border: none;
+}
+
+.pjs-day--selected:hover:not(:disabled) {
+  background: var(--pjs-primary, #0d6efd);
+  opacity: 0.9;
+}
+
+.pjs-day--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pjs-day--disabled:hover {
+  background: transparent;
+}
+
+/* ─── Footer ─────────────────────────────────── */
+.pjs-footer {
+  border-top: 1px solid var(--pjs-border, #e5e7eb);
+  margin-top: 8px;
+  padding-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pjs-today-btn {
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: var(--pjs-radius-today, 8px);
+  border: none;
+  background: var(--pjs-primary, #0d6efd);
+  color: var(--pjs-primary-fg, #fff);
+  font-size: var(--pjs-font-size, 13px);
+  cursor: pointer;
+}
+
+.pjs-today-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.pjs-today-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Outside Day ────────────────────────────── */
+.pjs-day--outside {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ─── Error State ────────────────────────────── */
+.pjs-container--error .pjs-input,
+.pjs-input--error {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+/* ─── Loading State ──────────────────────────── */
+.pjs-container--loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ─── Responsive ─────────────────────────────── */
+@media (max-width: 480px) {
+  .pjs-dropdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100vw - 32px);
+    max-width: 320px;
+    z-index: 1000;
+  }
+}
+
+/* ─── Tailwind CSS v4 Compatible Imports ─────── */
+@property --pjs-primary {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0d6efd;
+}
+@property --pjs-primary-fg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --pjs-background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --pjs-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e5e7eb;
+}
+@property --pjs-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #111827;
+}
+@property --pjs-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #9ca3af;
+}
+@property --pjs-today-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0d6efd;
+}
+@property --pjs-font-family {
+  syntax: "*";
+  inherits: true;
+  initial-value: ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ─── CSS Variable Defaults ──────────────────── */
+:root {
+  --pjs-primary: #0d6efd;
+  --pjs-primary-fg: #ffffff;
+  --pjs-background: #ffffff;
+  --pjs-surface: #f9fafb;
+  --pjs-border: #e5e7eb;
+  --pjs-radius: 8px;
+  --pjs-text: #111827;
+  --pjs-muted: #9ca3af;
+  --pjs-accent: #f3f4f6;
+  --pjs-today-border: #0d6efd;
+  --pjs-font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ─── Dark Mode ──────────────────────────────── */
+.dark {
+  --pjs-background: #0a0a0f;
+  --pjs-surface: #111118;
+  --pjs-border: #1f1f2a;
+  --pjs-text: #f1f1f6;
+  --pjs-muted: #6b7280;
+  --pjs-accent: #1a1a24;
+}
+
+/* ─── Minimal Mode ──────────────────────────── */
+.pjs-minimal .pjs-input {
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  cursor: text;
+  width: 100%;
+}
+
+.pjs-minimal.pjs-dropdown,
+.pjs-minimal .pjs-dropdown {
+  background: var(--pjs-surface, #f9fafb);
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  animation: none;
+}
+
+.pjs-minimal .pjs-nav-btn {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+}
+
+.pjs-minimal .pjs-select {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  color: inherit;
+}
+
+.pjs-minimal .pjs-footer {
+  border-top: none;
+}
+
+.pjs-minimal .pjs-today-btn {
+  background: transparent;
+  color: inherit;
+  border: none;
+  border-radius: 0;
+}
+
+.pjs-minimal .pjs-day--today {
+  border: none;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.pjs-minimal .pjs-day--selected {
+  background: transparent;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.pjs-minimal .pjs-day--selected:hover:not(:disabled) {
+  background: transparent;
+  opacity: 1;
+}
+
+.pjs-minimal .pjs-day--disabled,
+.pjs-minimal .pjs-day--outside {
+  opacity: 1;
+}
+
+.pjs-minimal .pjs-day:hover:not(:disabled) {
+  background: transparent;
+}
+
+.pjs-minimal .pjs-container--error .pjs-input,
+.pjs-minimal .pjs-input--error {
+  border-color: initial !important;
+  box-shadow: none !important;
+}

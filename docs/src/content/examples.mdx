@@ -1,0 +1,700 @@
+import InteractiveExample from '@/components/InteractiveExample'
+import { BasicControlled, Uncontrolled, InlineMode, NepaliLocale, CustomFormat, Validation, ErrorLoading, DisabledReadOnly, ControlledOpen, WeekStart, CustomDay, CustomHeaderFooter, CustomFormatter, CustomTheme, Events, FormIntegration, Conversion } from '@/components/previews'
+
+## Examples
+
+### Basic Controlled
+
+<InteractiveExample code={`import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+
+function BasicExample() {
+  const [date, setDate] = useState(null);
+
+  return (
+    <>
+      <PatroDatePicker
+        minimal
+        value={date}
+        onChange={(bs, ad) => setDate(bs)}
+      />
+      {date && (
+        <p>Selected: {date.year}/{date.month}/{date.day}</p>
+      )}
+    </>
+  );
+}`}
+tsxCode={`import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDateProps } from '@patrojs/core';
+
+function BasicExample() {
+  const [date, setDate] = useState<PatroJsDateProps | null>(null);
+
+  return (
+    <>
+      <PatroDatePicker
+        minimal
+        value={date}
+        onChange={(bs, ad) => setDate(bs)}
+      />
+      {date && (
+        <p>Selected: {date.year}/{date.month}/{date.day}</p>
+      )}
+    </>
+  );
+}`}>
+  <BasicControlled />
+</InteractiveExample>
+
+---
+
+### Uncontrolled
+
+<InteractiveExample code={`function UncontrolledExample() {
+  return (
+    <PatroDatePicker
+      defaultValue={{ year: 2081, month: 4, day: 1 }}
+      onChange={(bs, ad) => console.log('Selected:', bs, 'AD:', ad)}
+    />
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDateProps } from '@patrojs/core';
+
+function UncontrolledExample() {
+  return (
+    <PatroDatePicker
+      defaultValue={{ year: 2081, month: 4, day: 1 }}
+      onChange={(bs: PatroJsDateProps | null, ad: string) =>
+        console.log('Selected:', bs, 'AD:', ad)
+      }
+    />
+  );
+}`}>
+  <Uncontrolled />
+</InteractiveExample>
+
+---
+
+### Inline Mode
+
+Render the calendar inline instead of inside a popup.
+
+<InteractiveExample code={`function InlineExample() {
+  return (
+    <div style={{ width: 320 }}>
+      <PatroDatePicker inline />
+    </div>
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+
+function InlineExample() {
+  return (
+    <div style={{ width: 320 }}>
+      <PatroDatePicker inline />
+    </div>
+  );
+}`}>
+  <InlineMode />
+</InteractiveExample>
+
+---
+
+### Nepali Locale
+
+Fully localized UI - month names, weekday labels, and numeric digits all render in Nepali.
+
+<InteractiveExample code={`function NepaliExample() {
+  const [date, setDate] = useState(null);
+
+  return (
+    <>
+      <PatroDatePicker
+        value={date}
+        onChange={(bs) => setDate(bs)}
+        language="ne"
+        formatPattern="DD Month YYYY"
+      />
+      {date && (
+        <p>चयन गरिएको मिति: {date.year}/{date.month}/{date.day}</p>
+      )}
+    </>
+  );
+}`}
+tsxCode={`import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDateProps } from '@patrojs/core';
+
+function NepaliExample() {
+  const [date, setDate] = useState<PatroJsDateProps | null>(null);
+
+  return (
+    <>
+      <PatroDatePicker
+        value={date}
+        onChange={(bs) => setDate(bs)}
+        language="ne"
+        formatPattern="DD Month YYYY"
+      />
+      {date && (
+        <p>चयन गरिएको मिति: {date.year}/{date.month}/{date.day}</p>
+      )}
+    </>
+  );
+}`}>
+  <NepaliLocale />
+</InteractiveExample>
+
+---
+
+### Custom Display Format
+
+<InteractiveExample code={`function FormatExample() {
+  return (
+    <>
+      <PatroDatePicker formatPattern="DD/MM/YYYY" />
+      <PatroDatePicker formatPattern="DD Month YYYY" />
+      <PatroDatePicker formatPattern="MMMM DD, YYYY" />
+    </>
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+
+function FormatExample() {
+  return (
+    <>
+      <PatroDatePicker formatPattern="DD/MM/YYYY" />
+      <PatroDatePicker formatPattern="DD Month YYYY" />
+      <PatroDatePicker formatPattern="MMMM DD, YYYY" />
+    </>
+  );
+}`}>
+  <CustomFormat />
+</InteractiveExample>
+
+---
+
+### Validation
+
+Restrict selectable dates with `minDate`, `maxDate`, `disabledDates`, and `disabledWeekdays`.
+
+<InteractiveExample code={`function ValidationExample() {
+  return (
+    <PatroDatePicker
+      defaultValue={{ year: 2081, month: 6, day: 15 }}
+      minDate={{ year: 2081, month: 1, day: 1 }}
+      maxDate={{ year: 2081, month: 12, day: 30 }}
+      disabledDates={(d) => d.day === 15}
+      disabledWeekdays={[0, 6]}
+    />
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDateProps } from '@patrojs/core';
+
+function ValidationExample() {
+  return (
+    <PatroDatePicker
+      defaultValue={{ year: 2081, month: 6, day: 15 }}
+      minDate={{ year: 2081, month: 1, day: 1 }}
+      maxDate={{ year: 2081, month: 12, day: 30 }}
+      disabledDates={(d: PatroJsDateProps) => d.day === 15}
+      disabledWeekdays={[0, 6]}
+    />
+  );
+}`}>
+  <Validation />
+</InteractiveExample>
+
+---
+
+### Error & Loading States
+
+<InteractiveExample code={`function StateExample() {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <PatroDatePicker
+        defaultValue={{ year: 2081, month: 1, day: 15 }}
+        error={error}
+      />
+      <PatroDatePicker
+        defaultValue={{ year: 2081, month: 1, day: 15 }}
+        loading={loading}
+      />
+      <button onClick={() => setError(!error)}>Toggle Error</button>
+      <button onClick={() => setLoading(!loading)}>Toggle Loading</button>
+    </div>
+  );
+}`}
+tsxCode={`import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+
+function StateExample() {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <PatroDatePicker
+        defaultValue={{ year: 2081, month: 1, day: 15 }}
+        error={error}
+      />
+      <PatroDatePicker
+        defaultValue={{ year: 2081, month: 1, day: 15 }}
+        loading={loading}
+      />
+      <button onClick={() => setError(!error)}>Toggle Error</button>
+      <button onClick={() => setLoading(!loading)}>Toggle Loading</button>
+    </div>
+  );
+}`}>
+  <ErrorLoading />
+</InteractiveExample>
+
+---
+
+### Disabled & ReadOnly
+
+<InteractiveExample code={`function DisabledExample() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <PatroDatePicker disabled />
+      <PatroDatePicker readOnly />
+    </div>
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+
+function DisabledExample() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <PatroDatePicker disabled />
+      <PatroDatePicker readOnly />
+    </div>
+  );
+}`}>
+  <DisabledReadOnly />
+</InteractiveExample>
+
+---
+
+### Controlled Open/Close
+
+<InteractiveExample code={`function ControlledOpenExample() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <PatroDatePicker
+        open={open}
+        onOpenChange={setOpen}
+        closeOnSelect={false}
+      />
+      <button onClick={() => setOpen(!open)}>
+        {open ? 'Close' : 'Open'} Picker
+      </button>
+    </div>
+  );
+}`}
+tsxCode={`import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+
+function ControlledOpenExample() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <PatroDatePicker
+        open={open}
+        onOpenChange={setOpen}
+        closeOnSelect={false}
+      />
+      <button onClick={() => setOpen(!open)}>
+        {open ? 'Close' : 'Open'} Picker
+      </button>
+    </div>
+  );
+}`}>
+  <ControlledOpen />
+</InteractiveExample>
+
+---
+
+### Week Start & Outside Days
+
+<InteractiveExample code={`function WeekStartExample() {
+  return (
+    <>
+      <p>Week starts on Monday, showing adjacent month days:</p>
+      <PatroDatePicker weekStart={1} showOutsideDays />
+    </>
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+
+function WeekStartExample() {
+  return (
+    <>
+      <p>Week starts on Monday, showing adjacent month days:</p>
+      <PatroDatePicker weekStart={1} showOutsideDays />
+    </>
+  );
+}`}>
+  <WeekStart />
+</InteractiveExample>
+
+---
+
+### Custom Day Rendering
+
+<InteractiveExample code={`function CustomDayExample() {
+  return (
+    <PatroDatePicker
+      renderDay={(day, { isDisabled, isFocused, onSelect }) => (
+        <div
+          onClick={isDisabled ? undefined : onSelect}
+          style={{
+            background: day.isSelected ? '#0d6efd' : 'transparent',
+            color: day.isSelected ? 'white' : 'inherit',
+            cursor: isDisabled ? 'not-allowed' : 'pointer',
+            opacity: isDisabled ? 0.4 : 1,
+            fontWeight: day.isToday ? 700 : 400,
+            padding: 8,
+            borderRadius: 8,
+            textAlign: 'center',
+          }}
+        >
+          {day.day}
+        </div>
+      )}
+    />
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDay } from '@patrojs/core';
+
+function CustomDayExample() {
+  return (
+    <PatroDatePicker
+      renderDay={(day: PatroJsDay, { isDisabled, onSelect }: { isDisabled: boolean; isFocused: boolean; onSelect: () => void }) => (
+        <div
+          onClick={isDisabled ? undefined : onSelect}
+          style={{
+            background: day.isSelected ? '#0d6efd' : 'transparent',
+            color: day.isSelected ? 'white' : 'inherit',
+            cursor: isDisabled ? 'not-allowed' : 'pointer',
+            opacity: isDisabled ? 0.4 : 1,
+            fontWeight: day.isToday ? 700 : 400,
+            padding: 8,
+            borderRadius: 8,
+            textAlign: 'center',
+          }}
+        >
+          {day.day}
+        </div>
+      )}
+    />
+  );
+}`}>
+  <CustomDay />
+</InteractiveExample>
+
+---
+
+### Custom Header & Footer
+
+<InteractiveExample code={`function CustomSlotsExample() {
+  return (
+    <PatroDatePicker
+      renderHeader={(defaultHeader) => (
+        <div style={{ textAlign: 'center', padding: 8, background: '#f0f4ff' }}>
+          {defaultHeader}
+        </div>
+      )}
+      renderFooter={(defaultFooter) => (
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {defaultFooter}
+          <button onClick={() => alert('Custom action')}>Custom</button>
+        </div>
+      )}
+    />
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+import type { ReactNode } from 'react';
+
+function CustomSlotsExample() {
+  return (
+    <PatroDatePicker
+      renderHeader={(defaultHeader: ReactNode) => (
+        <div style={{ textAlign: 'center', padding: 8, background: '#f0f4ff' }}>
+          {defaultHeader}
+        </div>
+      )}
+      renderFooter={(defaultFooter: ReactNode) => (
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          {defaultFooter}
+          <button onClick={() => alert('Custom action')}>Custom</button>
+        </div>
+      )}
+    />
+  );
+}`}>
+  <CustomHeaderFooter />
+</InteractiveExample>
+
+---
+
+### Custom Formatter
+
+<InteractiveExample code={`import type { PatroJsFormatter } from '@patrojs/react';
+
+const customFormatter: PatroJsFormatter = {
+  format: (date, lang) =>
+    \`\${date.day}/\${date.month}/\${date.year}\`,
+  parse: (value, lang) => {
+    const parts = value.split('/');
+    if (parts.length !== 3) return null;
+    const [d, m, y] = parts.map(Number);
+    return isNaN(y) || isNaN(m) || isNaN(d) ? null : { year: y, month: m, day: d };
+  },
+  isValid: (value, lang) => {
+    const parsed = customFormatter.parse(value, lang);
+    return parsed !== null && parsed.year >= 2000 && parsed.year <= 2099;
+  },
+  placeholder: (lang) => 'DD/MM/YYYY',
+};
+
+function CustomFormatterExample() {
+  return <PatroDatePicker formatter={customFormatter} />;
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsFormatter, PatroJsLanguage, PatroJsDateProps } from '@patrojs/core';
+
+const customFormatter: PatroJsFormatter = {
+  format: (date: PatroJsDateProps, lang: PatroJsLanguage): string =>
+    \`\${date.day}/\${date.month}/\${date.year}\`,
+  parse: (value: string, lang: PatroJsLanguage): PatroJsDateProps | null => {
+    const parts = value.split('/');
+    if (parts.length !== 3) return null;
+    const [d, m, y] = parts.map(Number);
+    return isNaN(y) || isNaN(m) || isNaN(d) ? null : { year: y, month: m, day: d };
+  },
+  isValid: (value: string, lang: PatroJsLanguage): boolean => {
+    const parsed = customFormatter.parse(value, lang);
+    return parsed !== null && parsed.year >= 2000 && parsed.year <= 2099;
+  },
+  placeholder: (lang: PatroJsLanguage): string => 'DD/MM/YYYY',
+};
+
+function CustomFormatterExample() {
+  return <PatroDatePicker formatter={customFormatter} />;
+}`}>
+  <CustomFormatter />
+</InteractiveExample>
+
+---
+
+### Custom Theme
+
+<InteractiveExample code={`function ThemeExample() {
+  return (
+    <PatroDatePicker
+      config={{
+        size: 'lg',
+        colors: { primary: '#16a34a', primaryBg: '#ffffff' },
+        radius: { calendar: '16px', day: '12px' },
+        gridStyle: 'bordered',
+        navIcons: { prev: '\u25C0', next: '\u25B6' },
+      }}
+    />
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+
+function ThemeExample() {
+  return (
+    <PatroDatePicker
+      config={{
+        size: 'lg' as const,
+        colors: { primary: '#16a34a', primaryBg: '#ffffff' },
+        radius: { calendar: '16px', day: '12px' },
+        gridStyle: 'bordered' as const,
+        navIcons: { prev: '\u25C0', next: '\u25B6' },
+      }}
+    />
+  );
+}`}>
+  <CustomTheme />
+</InteractiveExample>
+
+---
+
+### Events
+
+<InteractiveExample code={`function EventsExample() {
+  return (
+    <PatroDatePicker
+      onChange={(bs, ad) => console.log('Selected:', bs, ad)}
+      onMonthChange={(year, month) => console.log('Month changed:', year, month)}
+      onYearChange={(year) => console.log('Year changed:', year)}
+      onFocus={(e) => console.log('Focused')}
+      onBlur={(e) => console.log('Blurred')}
+      onOpenChange={(open) => console.log('Open:', open)}
+    />
+  );
+}`}
+tsxCode={`import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDateProps } from '@patrojs/core';
+import type { FocusEvent } from 'react';
+
+function EventsExample() {
+  return (
+    <PatroDatePicker
+      onChange={(bs: PatroJsDateProps | null, ad: string) =>
+        console.log('Selected:', bs, ad)
+      }
+      onMonthChange={(year: number, month: number) =>
+        console.log('Month changed:', year, month)
+      }
+      onYearChange={(year: number) => console.log('Year changed:', year)}
+      onFocus={(e: FocusEvent<HTMLInputElement>) => console.log('Focused')}
+      onBlur={(e: FocusEvent<HTMLInputElement>) => console.log('Blurred')}
+      onOpenChange={(open: boolean) => console.log('Open:', open)}
+    />
+  );
+}`}>
+  <Events />
+</InteractiveExample>
+
+---
+
+### Form Integration
+
+<InteractiveExample code={`function FormExample() {
+  const [date, setDate] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Submitted BS date:', date);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Birth Date (BS)</label>
+      <PatroDatePicker
+        value={date}
+        onChange={(bs) => setDate(bs)}
+        placeholder="Select birth date"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}`}
+tsxCode={`import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDateProps } from '@patrojs/core';
+import type { FormEvent } from 'react';
+
+function FormExample() {
+  const [date, setDate] = useState<PatroJsDateProps | null>(null);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log('Submitted BS date:', date);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Birth Date (BS)</label>
+      <PatroDatePicker
+        value={date}
+        onChange={(bs) => setDate(bs)}
+        placeholder="Select birth date"
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}`}>
+  <FormIntegration />
+</InteractiveExample>
+
+---
+
+### AD/BS Conversion
+
+<InteractiveExample code={`import { todayBs, bsToAd } from '@patrojs/core';
+
+function ConversionExample() {
+  const today = todayBs(); // { year: 2081, month: 4, day: 1 }
+  const todayAD = bsToAd(today); // '2024-07-14'
+
+  return (
+    <div>
+      <p>Today BS: {today.year}/{today.month}/{today.day}</p>
+      <p>Today AD: {todayAD}</p>
+    </div>
+  );
+}`}
+tsxCode={`import { todayBs, bsToAd } from '@patrojs/core';
+import type { PatroJsDateProps } from '@patrojs/core';
+
+function ConversionExample() {
+  const today: PatroJsDateProps = todayBs();
+  const todayAD: string = bsToAd(today);
+
+  return (
+    <div>
+      <p>Today BS: {today.year}/{today.month}/{today.day}</p>
+      <p>Today AD: {todayAD}</p>
+    </div>
+  );
+}`}>
+  <Conversion />
+</InteractiveExample>
+
+---
+
+### Next.js (App Router)
+
+Wrap the import in a `'use client'` boundary:
+
+```tsx
+// app/components/PatroPicker.tsx
+'use client';
+export { PatroDatePicker } from '@patrojs/react';
+```
+
+Then use it in your server page:
+
+```tsx
+// app/page.tsx
+import { PatroPicker } from './components/PatroPicker';
+import '@patrojs/react/dist/index.css';
+
+export default function Page() {
+  return <PatroPicker />;
+}
+```
+
+---
+
+### Next.js (Pages Router)
+
+```tsx
+// pages/index.tsx
+import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+import '@patrojs/react/dist/index.css';
+
+export default function Home() {
+  const [date, setDate] = useState({ year: 2081, month: 1, day: 15 });
+
+  return <PatroDatePicker value={date} onChange={(bs) => setDate(bs)} />;
+}
+```

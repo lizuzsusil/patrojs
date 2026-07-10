@@ -1,0 +1,361 @@
+import { Table, Tabs } from 'nextra/components'
+import PropsTable from '@/components/tables/PropsTable'
+import DataTable from '@/components/tables/DataTable'
+
+## Reference
+
+### Props
+
+#### Value & Behavior
+
+<div className="mt-4" />
+
+<PropsTable props={[
+  { name: 'value', type: 'PatroJsDateProps | null', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Controlled value. When provided, the component acts as a controlled component.' },
+  { name: 'defaultValue', type: 'PatroJsDateProps', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Uncontrolled default value.' },
+  { name: 'onChange', type: '(bs: PatroJsDateProps, ad: string) => void', defaultValue: '\u2013', description: 'Called when a date is selected. Returns the BS date object and AD date as <code>YYYY-MM-DD</code>.' },
+  { name: 'inline', type: 'boolean', defaultValue: 'false', description: 'Render the calendar inline instead of inside a popup.' },
+  { name: 'open', type: 'boolean', defaultValue: '\u2013', description: 'Controlled open state for the popup.' },
+  { name: 'onOpenChange', type: '(open: boolean) => void', defaultValue: '\u2013', description: 'Called when the popup opens or closes.' },
+  { name: 'closeOnSelect', type: 'boolean', defaultValue: 'true', description: 'Auto-close the popup after a date is selected.' },
+  { name: 'closeOnOutsideClick', type: 'boolean', defaultValue: 'true', description: 'Close the popup when clicking outside the component.' },
+  { name: 'readOnly', type: 'boolean', defaultValue: 'false', description: 'Prevent editing the input and selecting dates.' },
+  { name: 'disabled', type: 'boolean', defaultValue: 'false', description: 'Disable the entire component.' },
+]} />
+
+#### Localization & Formatting
+
+<div className="mt-4" />
+
+<PropsTable props={[
+  { name: 'language', type: "'en' | 'ne'", defaultValue: "'en'", description: 'Locale for month names, weekday labels, and numeric digits.' },
+  { name: 'placeholder', type: 'string', defaultValue: 'Localized default', description: 'Input placeholder text. Defaults to <code>2081-01-15</code> in English, <code>\u0967\u0966\u0968\u0967-\u0966\u0967-\u0967\u096b</code> in Nepali.' },
+  { name: 'formatPattern', type: 'PatroJsFormatPattern', typeDefinition: 'type PatroJsFormatPattern =\n  | \u0027YYYY-MM-DD\u0027\n  | \u0027DD/MM/YYYY\u0027\n  | \u0027DD-MM-YYYY\u0027\n  | \u0027YYYY_MM_DD\u0027\n  | \u0027DD Month YYYY\u0027\n  | \u0027MMMM DD, YYYY\u0027\n  | string;', defaultValue: "'YYYY-MM-DD'", description: 'Display format for the input. See <a href="#format-patterns">Format Patterns</a>.' },
+  { name: 'formatter', type: 'PatroJsFormatter', typeDefinition: 'interface PatroJsFormatter {\n  format(date: PatroJsDateProps, language: PatroJsLanguage): string;\n  parse(value: string, language: PatroJsLanguage): PatroJsDateProps | null;\n  isValid(value: string, language: PatroJsLanguage): boolean;\n  placeholder(language: PatroJsLanguage): string;\n}', defaultValue: '\u2013', description: 'Custom formatter overriding <code>format</code>, <code>parse</code>, <code>isValid</code>, and <code>placeholder</code>.' },
+]} />
+
+#### Validation & Constraints
+
+<div className="mt-4" />
+
+<PropsTable props={[
+  { name: 'minDate', type: 'PatroJsDateProps', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Minimum selectable date. Earlier dates are disabled.' },
+  { name: 'maxDate', type: 'PatroJsDateProps', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Maximum selectable date. Later dates are disabled.' },
+  { name: 'disabledDates', type: '(date: PatroJsDateProps) => boolean', defaultValue: '\u2013', description: 'Return <code>true</code> to disable a specific date.' },
+  { name: 'disabledWeekdays', type: 'number[]', defaultValue: '\u2013', description: 'Weekday indices to disable (0=Sunday, 6=Saturday).' },
+  { name: 'weekStart', type: 'number', defaultValue: '0', description: 'First day of the week (0=Sunday, \u2026, 6=Saturday).' },
+  { name: 'showOutsideDays', type: 'boolean', defaultValue: 'false', description: 'Show adjacent-month days in the grid, rendered as disabled.' },
+  { name: 'outsideDayLabel', type: 'string', defaultValue: 'Localized default', description: 'ARIA label prefix for outside-month days.' },
+]} />
+
+#### Appearance & Theming
+
+<div className="mt-4" />
+
+<PropsTable props={[
+  { name: 'config', type: 'PatroJsPickerConfig', typeDefinition: 'interface PatroJsPickerConfig {\n  size?: \u0027sm\u0027 | \u0027md\u0027 | \u0027lg\u0027;\n  sizeTokens?: Partial<PatroJsSizeTokens>;\n  colors?: ColorConfig;\n  radius?: RadiusConfig;\n  gridStyle?: \u0027borderless\u0027 | \u0027bordered\u0027;\n  navIcons?: NavIconConfig;\n}', defaultValue: '\u2013', description: 'Theme configuration \u2013 size, colors, radius, grid style, nav icons. See <a href="#theme-configuration">Theme Configuration</a>.' },
+  { name: 'styles', type: 'PatroJsPickerStyles', typeDefinition: 'interface PatroJsPickerStyles {\n  container?: CSSProperties;\n  input?: CSSProperties;\n  dropdown?: CSSProperties;\n  header?: CSSProperties;\n  navButton?: CSSProperties;\n  select?: CSSProperties;\n  weekRow?: CSSProperties;\n  dayLabel?: CSSProperties;\n  grid?: CSSProperties;\n  dayCell?: CSSProperties;\n  selectedDay?: CSSProperties;\n  today?: CSSProperties;\n  footer?: CSSProperties;\n  todayButton?: CSSProperties;\n  error?: CSSProperties;\n  loading?: CSSProperties;\n  outsideDay?: CSSProperties;\n}', defaultValue: '{}', description: 'Per-slot inline style overrides. See <a href="#style-slots">Style Slots</a>.' },
+  { name: 'classNames', type: 'PatroJsPickerClassNames', typeDefinition: 'interface PatroJsPickerClassNames {\n  container?: string;\n  input?: string;\n  dropdown?: string;\n  header?: string;\n  navButton?: string;\n  select?: string;\n  weekRow?: string;\n  dayLabel?: string;\n  grid?: string;\n  dayCell?: string;\n  selectedDay?: string;\n  today?: string;\n  footer?: string;\n  todayButton?: string;\n  error?: string;\n  loading?: string;\n  outsideDay?: string;\n}', defaultValue: '{}', description: 'Per-slot class name overrides.' },
+  { name: 'minimal', type: 'boolean', defaultValue: 'false', description: 'Strip default styling: the input becomes unstyled and the dropdown gets only structural layout. Customize via CSS variables.' },
+  { name: 'icon', type: 'ReactNode | false', defaultValue: 'Default calendar icon', description: 'Icon rendered inside the input. Pass <code>false</code> to hide it.' },
+  { name: 'iconPosition', type: "'start' | 'end'", defaultValue: "'start'", description: 'Position of the input icon.' },
+  { name: 'error', type: 'boolean', defaultValue: 'false', description: 'Show error state styling (red border, focus ring).' },
+  { name: 'loading', type: 'boolean', defaultValue: 'false', description: 'Show loading state styling (reduced opacity, pointer events disabled).' },
+  { name: 'showTodayButton', type: 'boolean', defaultValue: 'true', description: 'Show the Today button in the calendar footer.' },
+  { name: 'todayLabel', type: 'string', defaultValue: "'Today' / '\u0906\u091c'", description: 'Custom label for the Today button.' },
+]} />
+
+#### Events
+
+<div className="mt-4" />
+
+<PropsTable props={[
+  { name: 'onFocus', type: 'React.FocusEventHandler', defaultValue: '\u2013', description: 'Focus handler for the input element.' },
+  { name: 'onBlur', type: 'React.FocusEventHandler', defaultValue: '\u2013', description: 'Blur handler for the input element. Resets invalid typed input on blur.' },
+  { name: 'onMonthChange', type: '(year: number, month: number) => void', defaultValue: '\u2013', description: 'Called when the visible month changes via navigation.' },
+  { name: 'onYearChange', type: '(year: number) => void', defaultValue: '\u2013', description: 'Called when the visible year changes via navigation.' },
+]} />
+
+#### Custom Rendering
+
+<div className="mt-4" />
+
+<PropsTable props={[
+  { name: 'renderDay', type: '(day: PatroJsDay, props) => ReactNode', typeDefinition: 'interface PatroJsDay {\n  day: number;\n  isToday: boolean;\n  isSelected: boolean;\n  isDisabled: boolean;\n  adDate: Date;\n}', defaultValue: '\u2013', description: 'Custom day cell renderer. Receives the day object and render props (<code>isDisabled</code>, <code>isFocused</code>, <code>onSelect</code>).' },
+  { name: 'renderHeader', type: '(defaultHeader: ReactNode) => ReactNode', defaultValue: '\u2013', description: 'Custom header renderer. Receives the default header as an argument.' },
+  { name: 'renderFooter', type: '(defaultFooter: ReactNode) => ReactNode', defaultValue: '\u2013', description: 'Custom footer renderer. Receives the default footer as an argument.' },
+]} />
+
+---
+
+### Core Types
+
+#### `PatroJsDateProps`
+
+```ts
+interface PatroJsDateProps {
+  year: number;  // BS year (2000–2099)
+  month: number; // 1–12
+  day: number;   // 1–32
+}
+```
+
+#### `PatroJsDay`
+
+```ts
+interface PatroJsDay {
+  day: number;
+  isToday: boolean;
+  isSelected: boolean;
+  isDisabled: boolean;
+  adDate: Date;  // Equivalent AD date
+}
+```
+
+#### `PatroJsMonth`
+
+```ts
+interface PatroJsMonth {
+  year: number;
+  month: number;
+  monthName: string;
+  weekDays: string[];
+  days: (PatroJsDay | null)[];
+  allMonths: string[];
+}
+```
+
+#### `PatroJsLanguage`
+
+```ts
+type PatroJsLanguage = 'en' | 'ne';
+```
+
+#### `PatroJsFormatter`
+
+```ts
+interface PatroJsFormatter {
+  format(date: PatroJsDateProps, language: PatroJsLanguage): string;
+  parse(value: string, language: PatroJsLanguage): PatroJsDateProps | null;
+  isValid(value: string, language: PatroJsLanguage): boolean;
+  placeholder(language: PatroJsLanguage): string;
+}
+```
+
+---
+
+### Format Patterns
+
+Controlled via the `formatPattern` prop. Default is `YYYY-MM-DD`.
+
+<div className="mt-4" />
+
+<DataTable
+  columns={[
+    {
+      key: 'pattern',
+      header: 'Pattern',
+      type: 'code'
+    },
+    {
+      key: 'english',
+      header: 'English',
+      type: 'code'
+    },
+    {
+      key: 'nepali',
+      header: 'Nepali',
+      type: 'code'
+    },
+  ]}
+  data={[
+    {
+      pattern: 'YYYY-MM-DD',
+      english: '2081-01-15',
+      nepali: '२०८१-०१-१५',
+    },
+    {
+      pattern: 'DD/MM/YYYY',
+      english: '15/01/2081',
+      nepali: '१५/०१/२०८१',
+    },
+    {
+      pattern: 'DD-MM-YYYY',
+      english: '15-01-2081',
+      nepali: '१५-०१-२०८१',
+    },
+    {
+      pattern: 'DD Month YYYY',
+      english: '15 Baishakh 2081',
+      nepali: '१५ बैशाख २०८१',
+    },
+    {
+      pattern: 'MMMM DD, YYYY',
+      english: 'Baishakh 15, 2081',
+      nepali: 'बैशाख १५, २०८१',
+    },
+    {
+      pattern: 'YYYY_MM_DD',
+      english: '2081_01_15',
+      nepali: '२०८१_०१_१५',
+    },
+  ]}
+/>
+
+Custom patterns are also supported using `YYYY`, `MM`, `DD`, and `MMMM` tokens:
+
+```tsx
+<PatroDatePicker formatPattern="YYYY/MM/DD" />
+```
+
+---
+
+### Theme Configuration
+
+The `config` prop customizes appearance without writing custom CSS.
+
+```ts
+interface PatroJsPickerConfig {
+  size?: 'sm' | 'md' | 'lg';
+  sizeTokens?: Partial<PatroJsSizeTokens>;
+  colors?: ColorConfig;
+  radius?: RadiusConfig;
+  gridStyle?: 'borderless' | 'bordered';
+  navIcons?: NavIconConfig;
+}
+```
+
+#### Size Presets
+
+<div className="mt-4" />
+
+<DataTable
+  columns={[
+    {
+      key: 'size',
+      header: 'Size',
+      type: 'code',
+    },
+    {
+      key: 'calendarWidth',
+      header: 'Calendar Width',
+      type: 'code',
+    },
+    {
+      key: 'dayCell',
+      header: 'Day Cell',
+      type: 'code',
+    },
+    {
+      key: 'fontSize',
+      header: 'Font Size',
+      type: 'code',
+    },
+  ]}
+  data={[
+    {
+      size: 'sm',
+      calendarWidth: '260px',
+      dayCell: '30px',
+      fontSize: '12px',
+    },
+    {
+      size: 'md',
+      calendarWidth: '320px',
+      dayCell: '36px',
+      fontSize: '13px',
+    },
+    {
+      size: 'lg',
+      calendarWidth: '380px',
+      dayCell: '44px',
+      fontSize: '15px',
+    },
+  ]}
+/>
+
+#### Color Configuration
+
+```ts
+interface ColorConfig {
+  primary?: string;      // Selected day bg, today border, footer btn bg
+  primaryBg?: string;    // Text color on primary background
+  todayBorder?: string;  // Override today's border color
+}
+```
+
+#### Radius Configuration
+
+```ts
+interface RadiusConfig {
+  calendar?: string;  // Dropdown panel
+  input?: string;     // Input field
+  day?: string;       // Day cells
+  select?: string;    // Month/year selects
+  navBtn?: string;    // Nav buttons
+  todayBtn?: string;  // Today button
+}
+```
+
+#### Example - green theme, compact size, pill input
+
+```tsx
+<PatroDatePicker
+  config={{
+    size: 'sm',
+    colors: { primary: '#16a34a' },
+    radius: { input: '999px', calendar: '16px', day: '8px' },
+    gridStyle: 'bordered',
+    navIcons: { prev: '◀', next: '▶' },
+  }}
+/>
+```
+
+---
+
+## Style Slots
+
+Override individual parts of the component using the `styles` or `classNames` props.
+
+- `styles` accepts inline React `CSSProperties` objects.
+- `classNames` accepts CSS class names for each component slot.
+- Both props support the same slot keys.
+
+<Tabs items={['Inline Styles', 'CSS Classes']}>
+  <Tabs.Tab>
+
+```tsx
+import { PatroDatePicker } from '@patrojs/react';
+
+export function StyledExample() {
+  return (
+    <PatroDatePicker
+      styles={{
+        input: { borderColor: '#2563eb', fontWeight: 600 },
+        selectedDay: { backgroundColor: '#e11d48' },
+      }}
+    />
+  );
+}
+```
+
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+
+```tsx
+import { PatroDatePicker } from '@patrojs/react';
+
+export function StyledExample() {
+  return (
+    <PatroDatePicker
+      classNames={{
+        input: 'border-blue-500 rounded-xl font-semibold',
+        selectedDay: 'bg-red-500 text-white',
+      }}
+    />
+  );
+}
+```
+  </Tabs.Tab>
+</Tabs>
