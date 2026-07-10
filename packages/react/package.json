@@ -48,7 +48,7 @@
     "typescript",
     "ts"
   ],
-  "author": "your-name",
+  "author": "lizuzsusil",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -61,7 +61,9 @@
     },
     "./style.css": "./dist/index.css"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -84,6 +86,7 @@
   },
   "homepage": "https://github.com/lizuzsusil/patrojs#readme",
   "devDependencies": {
+    "@types/node": "^20.19.43",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "react": "^19.0.0",

@@ -11,7 +11,7 @@ const banner = (
 const navbar = (
   <Navbar
     logo={<Logo />}
-    projectLink="https://github.com/lizuzsusil/patro"
+    projectLink="https://github.com/lizuzsusil/patrojs"
   />
 )
 

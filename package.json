@@ -17,9 +17,13 @@
     "docs:build": "pnpm --filter @patrojs/docs build",
     "docs:start": "pnpm --filter @patrojs/docs start",
     "start": "pnpm install && pnpm docs:dev",
-    "release:publish": "pnpm build && pnpm --filter @patrojs/core publish && pnpm --filter @patrojs/react publish"
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release:publish": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.31.0",
     "prettier": "^3.5.0",
     "turbo": "^2.0.0",
     "typescript": "^5.5.0"

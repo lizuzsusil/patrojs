@@ -10,8 +10,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@patrojs/core": ["../core/src/index.ts"],
-      "@patrojs/core/*": ["../core/src/*"]
+      "@patrojs/core": ["../core/dist/index.d.ts"],
+      "@patrojs/core/*": ["../core/dist/*"]
     }
   },
   "include": ["src"]
