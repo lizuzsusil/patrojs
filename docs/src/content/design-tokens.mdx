@@ -1,0 +1,70 @@
+## Design Tokens
+
+The date picker is fully themeable using CSS custom properties prefixed with `--pjs-`. Override these variables on `:root` to apply global styles, or on any parent element to scope the theme to a specific instance.
+
+### Color Tokens
+
+These variables control the component's colors, typography, and overall visual appearance.
+
+```css
+:root {
+  --pjs-primary: #0d6efd;          /* Selected day background, today border, focus ring */
+  --pjs-primary-fg: #ffffff;       /* Text color on selected day */
+  --pjs-today-border: #0d6efd;     /* Today's border (falls back to --pjs-primary) */
+  --pjs-background: #ffffff;       /* Dropdown / input background */
+  --pjs-surface: #f9fafb;          /* Disabled input background */
+  --pjs-border: #e5e7eb;           /* Input / dropdown / grid borders */
+  --pjs-text: #111827;             /* Primary text color */
+  --pjs-muted: #9ca3af;            /* Muted text (weekday labels) */
+  --pjs-accent: #f3f4f6;           /* Day cell hover background */
+  --pjs-font-family: ui-sans-serif, system-ui, sans-serif;
+}
+```
+
+### Sizing & Spacing Tokens
+
+Use these variables to customize the component's dimensions, spacing, and typography.
+
+```css
+:root {
+  --pjs-input-width: 180px;        /* Input field width */
+  --pjs-input-padding: 10px 12px;  /* Input padding */
+  --pjs-calendar-width: 320px;     /* Dropdown / calendar width */
+  --pjs-calendar-padding: 10px;    /* Dropdown inner padding */
+
+  --pjs-font-size: 13px;           /* Base font size */
+  --pjs-header-font-size: 13px;    /* Month / year select font size */
+  --pjs-weekday-font-size: 11px;   /* Weekday label font size */
+  --pjs-day-size: 36px;            /* Day cell width & height */
+}
+```
+
+### Border Radius Tokens
+
+These variables control the rounding of the input, calendar, controls, and day cells.
+
+```css
+:root {
+  --pjs-radius-input: 10px;        /* Input border-radius */
+  --pjs-radius-calendar: 8px;      /* Dropdown border-radius */
+  --pjs-radius-select: 8px;        /* Month/year select border-radius */
+  --pjs-radius-nav: 10px;          /* Navigation button border-radius */
+  --pjs-radius-day: 8px;           /* Day cell border-radius */
+  --pjs-radius-today: 8px;         /* Today button border-radius */
+}
+```
+
+### Dark Mode
+
+To create a dark theme, override the same CSS variables inside a `.dark` selector (or any custom theme selector). Variables that are not overridden continue to use their existing values.
+
+```css
+.dark {
+  --pjs-background: #0a0a0f;
+  --pjs-surface: #111118;
+  --pjs-border: #1f1f2a;
+  --pjs-text: #f1f1f6;
+  --pjs-muted: #6b7280;
+  --pjs-accent: #1a1a24;
+}
+```

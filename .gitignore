@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 
 *.idea
+
+# *.md
+# !README.md
+
+# Turbo
+.turbo
+
+# Pagefind search index
+_pagefind/

@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@patrojs/core": ["core/src/index.ts"],
-      "@patrojs/core/*": ["core/src/*"]
+      "@patrojs/core": ["packages/core/src/index.ts"],
+      "@patrojs/core/*": ["packages/core/src/*"]
     }
   }
 }

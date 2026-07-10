@@ -1,0 +1,32 @@
+{
+  "name": "@patrojs/core",
+  "version": "1.0.0",
+  "type": "module",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "echo '@patrojs/core: no build step (source-only)'",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lizuzsusil/patrojs.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/lizuzsusil/patrojs/issues"
+  },
+  "homepage": "https://github.com/lizuzsusil/patrojs#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.9"
+  }
+}

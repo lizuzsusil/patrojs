@@ -1,0 +1,41 @@
+import PropsTable from '@/components/tables/PropsTable'
+
+## Core Utilities
+
+The `@patrojs/core` package provides the core Bikram Sambat (BS) date conversion and formatting utilities that power all PatroJS packages. These functions can be used independently in Node.js, React, or any JavaScript/TypeScript application.
+
+### API Reference
+
+<div className="mt-4" />
+
+<PropsTable props={[
+  { name: 'bsToAd', type: '(bs: PatroJsDateProps) => string', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Converts a Bikram Sambat (BS) date to an AD date string in <code>YYYY-MM-DD</code> format.' },
+  { name: 'adToBs', type: '(ad: Date) => PatroJsDateProps', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Converts a JavaScript <code>Date</code> object to its equivalent Bikram Sambat date.' },
+  { name: 'todayBs', type: '() => PatroJsDateProps', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Returns the current date in the Bikram Sambat calendar.' },
+  { name: 'formatBsDate', type: '(year: number, month: number, day: number, language?: PatroJsLanguage) => string', defaultValue: '\u2013', description: 'Formats a BS date into a standard date string.' },
+  { name: 'formatBsDatePattern', type: '(date: PatroJsDateProps, language?: PatroJsLanguage, pattern?: string) => string', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Formats a BS date using a custom formatting pattern.' },
+  { name: 'toNepaliDigits', type: '(value: string | number) => string', defaultValue: '\u2013', description: 'Converts English digits into Nepali (Devanagari) numerals.' },
+  { name: 'getDaysInMonth', type: '(year: number, month: number) => number', defaultValue: '\u2013', description: 'Returns the total number of days available in a given BS month.' },
+  { name: 'getMonthData', type: '(year: number, month: number, selected?: PatroJsDateProps, language?: PatroJsLanguage) => PatroJsMonth', typeDefinition: 'interface PatroJsMonth {\n  year: number;\n  month: number;\n  monthName: string;\n  weekDays: string[];\n  days: (PatroJsDay | null)[];\n}', defaultValue: '\u2013', description: 'Generates complete month data including weekdays and day information for calendar rendering.' },
+  { name: 'isLeapYear', type: '(year: number) => boolean', defaultValue: '\u2013', description: 'Determines whether a given Bikram Sambat year is a leap year.' },
+  { name: 'isValidBsDate', type: '(date: PatroJsDateProps) => boolean', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Checks whether a Bikram Sambat date is valid.' },
+  { name: 'getBsWeekday', type: '(date: PatroJsDateProps) => number', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Returns the weekday index for a BS date (<code>0 = Sunday</code> to <code>6 = Saturday</code>).' },
+]} />
+
+### Example
+
+```tsx
+import { todayBs, bsToAd } from '@patrojs/core';
+
+const today = todayBs();
+
+console.log(today);
+// {
+//   year: 2083,
+//   month: 4,
+//   day: 22
+// }
+
+console.log(bsToAd(today));
+// "2026-08-06"
+```

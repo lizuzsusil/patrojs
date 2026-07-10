@@ -1,0 +1,97 @@
+{
+  "name": "@patrojs/react",
+  "version": "1.0.0",
+  "description": "Nepali (Bikram Sambat) datepicker component for React",
+  "keywords": [
+    "patro",
+    "patrojs",
+    "patrojs-react",
+    "patro react",
+    "nepali",
+    "nepali calendar",
+    "nepali patro",
+    "nepali date",
+    "nepali datepicker",
+    "nepali date picker",
+    "nepali datetime",
+    "bikram sambat",
+    "vikram samvat",
+    "bs",
+    "bs calendar",
+    "bs date",
+    "bs datepicker",
+    "bs date picker",
+    "bs to ad",
+    "ad to bs",
+    "calendar",
+    "calendar component",
+    "datepicker",
+    "date picker",
+    "date selector",
+    "date input",
+    "date ui",
+    "time picker",
+    "datetime picker",
+    "react",
+    "reactjs",
+    "react component",
+    "react ui",
+    "react calendar",
+    "react datepicker",
+    "react date picker",
+    "react form component",
+    "localization",
+    "nepal",
+    "custom calendar",
+    "alternative calendar",
+    "hindu calendar",
+    "typescript",
+    "ts"
+  ],
+  "author": "your-name",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./style.css": "./dist/index.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "dependencies": {
+    "@patrojs/core": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lizuzsusil/patrojs.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/lizuzsusil/patrojs/issues"
+  },
+  "homepage": "https://github.com/lizuzsusil/patrojs#readme",
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

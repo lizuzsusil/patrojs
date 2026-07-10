@@ -1,0 +1,114 @@
+import { Callout, Tabs } from 'nextra/components'
+
+## Getting Started
+
+Start integrating **PatroJS DatePicker** into your React application with a few simple steps.
+
+---
+
+### Installation
+
+Install the package using your preferred package manager:
+
+```sh npm2yarn 
+npm i @patrojs/react
+```
+
+<Callout type="warning">
+  PatroJS DatePicker requires **React ^18** or **React ^19**. TypeScript support is included with built-in type declarations.
+</Callout>
+
+---
+
+### Import Styles
+
+Import the default component styles once in your application entry file.
+
+```tsx
+import '@patrojs/react/dist/index.css';
+```
+
+#### Tailwind CSS v4
+
+When using **Tailwind CSS v4**, import PatroJS styles after Tailwind to ensure component styles are applied correctly.
+
+```css
+@import "tailwindcss";
+@import "@patrojs/react/dist/index.css";
+```
+
+---
+
+### Basic Usage
+
+The following example demonstrates a minimal date picker setup with controlled state management.
+
+<Tabs items={['JSX', 'TSX']}>
+  <Tabs.Tab>
+
+```jsx
+import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+import '@patrojs/react/dist/index.css';
+
+export function BasicExample() {
+  const [date, setDate] = useState(null);
+
+  return (
+    <>
+      <PatroDatePicker
+        value={date}
+        onChange={(bs, ad) => setDate(bs)}
+      />
+
+      {date && (
+        <p>
+          Selected: {date.year}/{date.month}/{date.day}
+        </p>
+      )}
+    </>
+  );
+}
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+```tsx
+import { useState } from 'react';
+import { PatroDatePicker } from '@patrojs/react';
+import type { PatroJsDateProps } from '@patrojs/core';
+import '@patrojs/react/dist/index.css';
+
+export function BasicExample() {
+  const [date, setDate] = useState<PatroJsDateProps | null>(null);
+
+  return (
+    <>
+      <PatroDatePicker
+        minimal
+        value={date}
+        onChange={(bs, ad) => setDate(bs)}
+      />
+
+      {date && (
+        <p>
+          Selected: {date.year}/{date.month}/{date.day}
+        </p>
+      )}
+    </>
+  );
+}
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+---
+
+### Next Steps
+
+Continue exploring PatroJS DatePicker features:
+
+- Browse the **[Examples](/examples)** for localization, validation, range selection, custom styling, and advanced usage patterns.
+- Visit the **[Reference](/reference)** for complete component props, APIs, and utility documentation.

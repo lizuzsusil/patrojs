@@ -1,9 +1,32 @@
 {
   "name": "patrojs-monorepo",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:core": "pnpm --filter @patrojs/core build",
+    "build:react": "pnpm --filter @patrojs/react build",
     "dev": "turbo run dev",
-    "test": "turbo run test"
+    "dev:docs": "pnpm --filter @patrojs/docs dev",
+    "test": "turbo run test",
+    "lint": "pnpm -r --if-present lint",
+    "clean": "pnpm -r --if-present clean",
+    "typecheck": "tsc --noEmit -p tsconfig.base.json",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md,mdx}\" --ignore-path .gitignore",
+    "docs:dev": "pnpm --filter @patrojs/docs dev",
+    "docs:build": "pnpm --filter @patrojs/docs build",
+    "docs:start": "pnpm --filter @patrojs/docs start",
+    "start": "pnpm install && pnpm docs:dev",
+    "release:publish": "pnpm build && pnpm --filter @patrojs/core publish && pnpm --filter @patrojs/react publish"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.5.0"
+  },
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "pnpm": ">=11.0.0",
+    "node": ">=18.0.0"
   }
 }
