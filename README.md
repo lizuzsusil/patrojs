@@ -10,7 +10,6 @@
 
 ![npm](https://img.shields.io/npm/v/@patrojs/react) ![npm](https://img.shields.io/npm/dm/@patrojs/react) ![License](https://img.shields.io/npm/l/@patrojs/react) ![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)
 </div>
----
 
 ## Features
 
