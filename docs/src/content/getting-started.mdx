@@ -25,7 +25,7 @@ npm i @patrojs/react
 Import the default component styles once in your application entry file.
 
 ```tsx
-import '@patrojs/react/dist/index.css';
+import '@patrojs/react/style.css';
 ```
 
 #### Tailwind CSS v4
@@ -34,7 +34,7 @@ When using **Tailwind CSS v4**, import PatroJS styles after Tailwind to ensure c
 
 ```css
 @import "tailwindcss";
-@import "@patrojs/react/dist/index.css";
+@import "@patrojs/react/style.css";
 ```
 
 ---
@@ -49,7 +49,7 @@ The following example demonstrates a minimal date picker setup with controlled s
 ```jsx
 import { useState } from 'react';
 import { PatroDatePicker } from '@patrojs/react';
-import '@patrojs/react/dist/index.css';
+import '@patrojs/react/style.css';
 
 export function BasicExample() {
   const [date, setDate] = useState(null);
@@ -78,7 +78,7 @@ export function BasicExample() {
 import { useState } from 'react';
 import { PatroDatePicker } from '@patrojs/react';
 import type { PatroJsDateProps } from '@patrojs/core';
-import '@patrojs/react/dist/index.css';
+import '@patrojs/react/style.css';
 
 export function BasicExample() {
   const [date, setDate] = useState<PatroJsDateProps | null>(null);

@@ -3,15 +3,19 @@ import './main.css'
 import type {Metadata} from "next";
 import Header from "@/components/home/Header";
 
-async function getDownloads() {
+async function getPackageStats() {
     try {
         const metaRes = await fetch("https://registry.npmjs.org/@patrojs/react", {
-            next: {revalidate: 86400},
+            next: {
+                revalidate: 3600,
+            },
         });
 
         if (!metaRes.ok) return null;
 
         const meta = await metaRes.json();
+
+        const latestVersion = meta["dist-tags"]?.latest;
 
         const firstVersion = Object.keys(meta.time).find(
             (key) => !["created", "modified"].includes(key)
@@ -25,21 +29,27 @@ async function getDownloads() {
         const downloadsRes = await fetch(
             `https://api.npmjs.org/downloads/point/${start}:${end}/@patrojs/react`,
             {
-                next: {revalidate: 3600},
+                next: {
+                    revalidate: 3600,
+                },
             }
         );
 
         if (!downloadsRes.ok) return null;
 
-        const data = await downloadsRes.json();
-        return data.downloads as number;
+        const downloads = await downloadsRes.json();
+
+        return {
+            latestVersion,
+            totalDownloads: downloads.downloads as number,
+        };
     } catch {
         return null;
     }
 }
 
 export const metadata: Metadata = {
-    title: 'PatroJS - Nepali (Bikram Sambat) Date Picker for Web frameworks',
+    title: 'PatroJS - Home',
     description:
         'A modern, accessible, and fully customizable Bikram Sambat date picker for Web frameworks. Built with TypeScript, supports Nepali locale, custom theming, and works with Next.js, Vue, and Angular.',
     openGraph: {
@@ -57,12 +67,11 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-    const downloads = await getDownloads()
-
+    const stats = await getPackageStats()
     return (
         <>
             <Header/>
-            <Homepage downloads={downloads}/>
+            <Homepage downloads={stats?.totalDownloads} version={stats?.latestVersion}/>
         </>
     )
 }

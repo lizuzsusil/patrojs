@@ -675,7 +675,7 @@ Then use it in your server page:
 ```tsx
 // app/page.tsx
 import { PatroPicker } from './components/PatroPicker';
-import '@patrojs/react/dist/index.css';
+import '@patrojs/react/style.css';
 
 export default function Page() {
   return <PatroPicker />;
@@ -690,7 +690,7 @@ export default function Page() {
 // pages/index.tsx
 import { useState } from 'react';
 import { PatroDatePicker } from '@patrojs/react';
-import '@patrojs/react/dist/index.css';
+import '@patrojs/react/style.css';
 
 export default function Home() {
   const [date, setDate] = useState({ year: 2081, month: 1, day: 15 });
