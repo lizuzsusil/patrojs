@@ -4,8 +4,9 @@ import {formatDownloads} from "@/lib/utils";
 import {Icons} from "@/lib/icons";
 import FrameworkCards from "@/components/FrameworkCards";
 import {ScrollCue} from "@/components/home/ScrollCue";
+import type {HomepageProps} from "@/components/Homepage";
 
-function HeroSection({downloads}: { downloads: number | null }) {
+function HeroSection({downloads, version}: HomepageProps) {
     const reducedMotion = useReducedMotion()
 
     const heroAnim = (delay: number) => ({
@@ -22,7 +23,7 @@ function HeroSection({downloads}: { downloads: number | null }) {
                 <div className="flex flex-1 flex-col justify-center">
                     <motion.div className="order-1 md:order-1" {...heroAnim(0)}>
                         <div className="hp-hero-badge">
-                            <span className="hp-hero-badge-tag">v1.0.0</span>
+                            <span className="hp-hero-badge-tag">v{version}</span>
                             <span className="hp-hero-badge-label">Now available for React</span>
                         </div>
                     </motion.div>
@@ -73,7 +74,7 @@ function HeroSection({downloads}: { downloads: number | null }) {
                             className="inline-grid md:gap-0 gap-3 grid-cols-2 rounded-xl border border-border bg-card px-7 py-4 shadow-sm md:grid-cols-4 md:divide-x md:divide-border"
                         >
                             <div className="flex flex-col justify-center items-center px-6">
-                                <span className="text-[0.92rem] font-semibold">1.0.0</span>
+                                <span className="text-[0.92rem] font-semibold">{version}</span>
                                 <span className="text-[0.72rem] tracking-[0.04em] text-muted-foreground">
                               Version
                             </span>

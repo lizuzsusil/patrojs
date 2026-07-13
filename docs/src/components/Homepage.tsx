@@ -7,10 +7,12 @@ import CommunitySection from "@/components/home/CommunitySection";
 import {Footer} from "@/components/home/Footer";
 import HeroSection from "@/components/home/HeroSection";
 
-export function Homepage({downloads}: { downloads: number | null }) {
+export type HomepageProps = Record<'downloads' | 'version', number | null | undefined>
+
+export function Homepage(props: HomepageProps) {
     return (
         <main className="hp-main">
-            <HeroSection downloads={downloads}/>
+            <HeroSection {...props} />
             <FeaturesSection/>
             <WhySection/>
             <ResourceSection/>
