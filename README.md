@@ -46,7 +46,7 @@ Requires **React ^18** or **React ^19**.
 ### Import styles
 
 ```tsx
-import '@patrojs/react/dist/index.css';
+import '@patrojs/react/style.css';
 ```
 
 ---
@@ -56,7 +56,7 @@ import '@patrojs/react/dist/index.css';
 ```tsx
 import { useState } from 'react';
 import { PatroDatePicker } from '@patrojs/react';
-import '@patrojs/react/dist/index.css';
+import '@patrojs/react/style.css';
 
 function App() {
   const [date, setDate] = useState(null);

@@ -16,10 +16,7 @@ The `@patrojs/core` package provides the core Bikram Sambat (BS) date conversion
   { name: 'formatBsDatePattern', type: '(date: PatroJsDateProps, language?: PatroJsLanguage, pattern?: string) => string', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Formats a BS date using a custom formatting pattern.' },
   { name: 'toNepaliDigits', type: '(value: string | number) => string', defaultValue: '\u2013', description: 'Converts English digits into Nepali (Devanagari) numerals.' },
   { name: 'getDaysInMonth', type: '(year: number, month: number) => number', defaultValue: '\u2013', description: 'Returns the total number of days available in a given BS month.' },
-  { name: 'getMonthData', type: '(year: number, month: number, selected?: PatroJsDateProps, language?: PatroJsLanguage) => PatroJsMonth', typeDefinition: 'interface PatroJsMonth {\n  year: number;\n  month: number;\n  monthName: string;\n  weekDays: string[];\n  days: (PatroJsDay | null)[];\n}', defaultValue: '\u2013', description: 'Generates complete month data including weekdays and day information for calendar rendering.' },
   { name: 'isLeapYear', type: '(year: number) => boolean', defaultValue: '\u2013', description: 'Determines whether a given Bikram Sambat year is a leap year.' },
-  { name: 'isValidBsDate', type: '(date: PatroJsDateProps) => boolean', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Checks whether a Bikram Sambat date is valid.' },
-  { name: 'getBsWeekday', type: '(date: PatroJsDateProps) => number', typeDefinition: 'interface PatroJsDateProps {\n  year: number;\n  month: number;\n  day: number;\n}', defaultValue: '\u2013', description: 'Returns the weekday index for a BS date (<code>0 = Sunday</code> to <code>6 = Saturday</code>).' },
 ]} />
 
 ### Example
