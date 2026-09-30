@@ -16,7 +16,7 @@ describe('getDaysInMonth', () => {
   });
 
   it('returns 30 for unknown year with fallback', () => {
-    expect(getDaysInMonth(2100, 1)).toBe(30);
+    expect(getDaysInMonth(2101, 1)).toBe(30);
   });
 });
 
