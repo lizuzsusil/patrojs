@@ -97,7 +97,7 @@
   "publishConfig": {
     "access": "public",
     "dependencies": {
-      "@patrojs/core": "^1.0.0"
+      "@patrojs/core": "^1.0.1"
     }
   }
 }
